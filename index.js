@@ -1,12 +1,13 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const indxRouter = require("./routes/index-route");
 const errorMiddleware = require("./middlewares/error-middleware");
 const app = express();
-const PORT = 8000;
+const PORT = Number(process.env.PORT);
 
 // local host ko satta tesko id cause node js ko version update paci support garena => 127.0.0.1
-mongoose.connect("mongodb://0.0.0.0:27017/blog-application").then(() => {
+mongoose.connect(process.env.DB).then(() => {
   console.log("Database connected successfully");
 });
 
