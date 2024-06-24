@@ -1,21 +1,60 @@
 const router = require("express").Router();
+const blogController = require("./blog-controller");
 
-router.get("/", (req, res, next) => {
+//route 1
+router.get("/", async (req, res, next) => {
   try {
-    res.json({ msg: "blogs route" });
+    const result = await blogController.get();
+    res.json({ msg: result });
   } catch (error) {
     next(error);
   }
 });
 
-router.post("/", (req, res) => {
+//route 2
+router.post("/", async (req, res, next) => {
   try {
     const data = req.body;
-    data.time = Math.floor(data.Words / 100);
+    data.time = Math.floor(data.words / 100);
     console.log({ data });
-    res.json({ msg: "hello from blogs" });
+    const result = await blogController.create(data);
+    res.json({ msg: result });
   } catch (err) {
     next(err);
+  }
+});
+
+//route 3
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const result = await blogController.updateById("6678ec4a7053a4667ea2a50a", {
+      author: "kusum Wifey",
+    });
+    res.json({ msg: result });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//route 4
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const result = await blogController.deleteById("6678ec4a7053a4667ea2a50a");
+    res.json({ msg: result });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// route 5
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const id = req.params;
+    const body = req.body;
+    const result = await blogController.updateById(id, body);
+    res.json({ msg: result });
+  } catch (error) {
+    next(error);
   }
 });
 

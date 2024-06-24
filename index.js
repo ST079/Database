@@ -5,8 +5,9 @@ const errorMiddleware = require("./middlewares/error-middleware");
 const app = express();
 const PORT = 8000;
 
-mongoose.connect("mongodb://127.0.0.1:27017/blog-application").then(() => {
-  console.log("Database is connected");
+// local host ko satta tesko id cause node js ko version update paci support garena => 127.0.0.1
+mongoose.connect("mongodb://0.0.0.0:27017/blog-application").then(() => {
+  console.log("Database connected successfully");
 });
 
 app.use(express.json());
