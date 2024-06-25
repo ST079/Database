@@ -1,15 +1,16 @@
 //const mongoose = require("mongoose");
 const { Schema, model } = require("mongoose");
+const { ObjectId } = Schema.Types;
 
 const blogSchema = new Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
+  title: String,
+  author: { type: ObjectId, ref: "User" },
   publishedDate: { type: Date, default: Date.now() },
-  catagories: { type: Array },
-  content: { type: String },
-  words: { type: Number, required: true },
+  catagories: Array,
+  content: String,
+  words: Number,
   time: { type: Number },
-  featuredImage: { type: String },
+  featuredImage: String,
   createdAt: { type: Date, default: Date.now() },
   updatedAt: { type: Date, default: Date.now() },
 });

@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { titleValidate } = require("./blogs-validation-middleware");
 const blogController = require("./blog-controller");
 
 //route 1
@@ -12,7 +13,7 @@ router.get("/", async (req, res, next) => {
 });
 
 //route 2
-router.post("/", async (req, res, next) => {
+router.post("/", titleValidate, async (req, res, next) => {
   try {
     const data = req.body;
     data.time = Math.floor(data.words / 100);

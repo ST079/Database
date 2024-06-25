@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 const indxRouter = require("./routes/index-route");
 const errorMiddleware = require("./middlewares/error-middleware");
@@ -13,7 +14,8 @@ mongoose.connect(process.env.DB).then(() => {
 
 app.use(express.json());
 app.use(express.static("public"));
-app.use("/", indxRouter);
+app.use(morgan("dev"));
+app.use(process.env.VERSION, indxRouter);
 
 app.use(errorMiddleware);
 app.listen(PORT, () => {
