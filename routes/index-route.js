@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const blogRouter = require("../modules/blogs/blog-route");
-const userRouter = require("../modules/users/user-route");
-const roleRouter = require("../modules/roles/role-route");
+const blogRouter = require("./blog/blog-route");
+const userRouter = require("./user/user-route");
+const roleRouter = require("./role/role-route");
+const regestrationRouter = require("./user/regestration-route");
 
 //route 1
 router.get("/", (req, res, next) => {
@@ -15,4 +16,5 @@ router.get("/", (req, res, next) => {
 router.use("/blogs", blogRouter);
 router.use("/users", userRouter);
 router.use("/roles", roleRouter);
+router.use("/regestrations", regestrationRouter);
 module.exports = router;

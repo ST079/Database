@@ -1,6 +1,8 @@
 const router = require("express").Router();
-const { titleValidate } = require("./blogs-validation-middleware");
-const blogController = require("./blog-controller");
+const {
+  titleValidate,
+} = require("../../modules/blogs/blogs-validation-middleware");
+const blogController = require("../../modules/blogs/blog-controller");
 
 //route 1
 router.get("/", async (req, res, next) => {

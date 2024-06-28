@@ -1,6 +1,8 @@
 const router = require("express").Router();
-const userController = require("./user-controller");
-const { userValidate } = require("./user-validation-middleware");
+const userController = require("../../modules/users/user-controller");
+const {
+  userValidate,
+} = require("../../modules/users/user-validation-middleware");
 const { encryptPw } = require("../../middlewares/psw_encrypt_middleware");
 
 //route 1

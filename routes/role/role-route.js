@@ -1,6 +1,8 @@
 const router = require("express").Router();
-const roleController = require("./role-controller");
-const { roleValidate } = require("./role-validation-middleware");
+const roleController = require("../../modules/roles/role-controller");
+const {
+  roleValidate,
+} = require("../../modules/roles/role-validation-middleware");
 const { encryptPw } = require("../../middlewares/psw_encrypt_middleware");
 
 //route 1
